@@ -1,20 +1,58 @@
 export class StorageService {
   hotels = [
-    { id: 1, name: "Voyage Hotel", point: 9 },
-    { id: 2, name: "Maxx Royal Hotel", point: 5 },
-    { id: 3, name: "Vogue Hotel", point: 7 },
-    { id: 4, name: "Afytos Hotel", point: 4 },
-    { id: 5, name: "Selen Hotel", point: 6 },
+    {
+      id: 1,
+      name: "Voyage Hotel",
+      point: 9,
+      updatedTime: "2021-10-05T14:48:00.000Z",
+    },
+    {
+      id: 2,
+      name: "Maxx Royal Hotel",
+      point: 5,
+      updatedTime: "2021-11-05T14:48:00.000Z",
+    },
+    {
+      id: 3,
+      name: "Vogue Hotel",
+      point: 7,
+      updatedTime: "2021-09-05T14:48:00.000Z",
+    },
+    {
+      id: 4,
+      name: "Afytos Hotel",
+      point: 4,
+      updatedTime: "2021-12-05T14:48:00.000Z",
+    },
+    {
+      id: 5,
+      name: "Selen Hotel",
+      point: 6,
+      updatedTime: "2021-08-05T14:48:00.000Z",
+    },
   ];
+
+  sortHotels = (hotels) => {
+    hotels.sort(function (currHotel, nextHotel) {
+      return new Date(nextHotel.updatedTime) - new Date(currHotel.updatedTime);
+    });
+  };
 
   getHotels = () => {
     const hotels = localStorage.getItem("hotels");
     if (hotels) {
-      return JSON.parse(hotels);
+      const parsed = JSON.parse(hotels);
+      this.sortHotels(parsed);
+      return parsed;
     } else {
       localStorage.setItem("hotels", JSON.stringify(this.hotels));
+      this.sortHotels(this.hotels);
       return this.hotels;
     }
+  };
+
+  updateHotels = (hotels) => {
+    localStorage.setItem("hotels", hotels);
   };
 
   updateHotel = (hotelName, newPoint) => {
@@ -22,6 +60,7 @@ export class StorageService {
     let index = hotelList.findIndex((h) => h.name === hotelName);
     if (index > -1) {
       hotelList[index].point = newPoint;
+      hotelList[index].updatedTime = new Date().toISOString();
       const storedHotels = JSON.stringify(hotelList);
       localStorage.setItem("hotels", storedHotels);
     }

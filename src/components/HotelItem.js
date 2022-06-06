@@ -28,6 +28,7 @@ const HotelItem = ({ hotelDetails, onClickAction }) => {
     if (hotelPoint < MAX_HOTEL_POINT) {
       storageService.updateHotel(hotelDetails.name, hotelPoint + 1);
       setHotelPoint(hotelPoint + 1);
+      onClickAction();
     }
   };
 
@@ -35,6 +36,7 @@ const HotelItem = ({ hotelDetails, onClickAction }) => {
     if (hotelPoint > MIN_HOTEL_POINT) {
       storageService.updateHotel(hotelDetails.name, hotelPoint - 1);
       setHotelPoint(hotelPoint - 1);
+      onClickAction();
     }
   };
 

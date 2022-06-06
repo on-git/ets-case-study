@@ -1,0 +1,11 @@
+.addHotelLayout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addHotelTitle {
+  font-size: large;
+  font-weight: bold;
+  margin: 0;
+}

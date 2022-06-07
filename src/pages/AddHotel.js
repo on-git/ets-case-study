@@ -3,7 +3,9 @@ import Button from "react-bootstrap/Button";
 import { StorageService } from "../services/StorageService";
 import { useNavigate } from "react-router-dom";
 import { BsCheckLg } from "react-icons/bs";
+import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddHotel = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -42,9 +44,24 @@ const AddHotel = () => {
         height: "60vh",
         width: "30vw",
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
+        gap: "5rem",
       }}
     >
+      <Link to="/" style={{ width: "fit-content", textDecoration: "none" }}>
+        <Button
+          variant="outline-primary"
+          style={{
+            width: "fit-content",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <BsArrowLeft />
+          <span>Listeye Geri Dön</span>
+        </Button>
+      </Link>
       <Form style={{ width: "inherit" }} onSubmit={saveHotel}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Otel Adı</Form.Label>

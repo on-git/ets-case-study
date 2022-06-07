@@ -42,8 +42,8 @@ export class StorageService {
       return hotelList;
     } else {
       localStorage.setItem("hotels", JSON.stringify(this.hotels));
-      this.sortHotels(this.hotels);
-      return this.hotels;
+      let hotelList = sortByDate(this.hotels);
+      return hotelList;
     }
   };
 

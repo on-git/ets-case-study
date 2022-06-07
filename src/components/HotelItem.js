@@ -46,7 +46,13 @@ const HotelItem = ({ hotelDetails, onClickAction }) => {
         className="deleteHotelButton"
         onClick={() => setDisplayDialog(true)}
       />
-      <img src="holder.js/100px180" />
+      <div style={{ flex: "1" }}>
+        <img
+          src="https://images.etstur.com/files/images/hotelImages/TR/51957/m/Titanic-Deluxe-Golf-Belek-Genel-300924.jpg"
+          loading="lazy"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </div>
       <div className="itemBody">
         <div>
           <h5>{hotelDetails.name}</h5>

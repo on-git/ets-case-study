@@ -8,7 +8,7 @@ import { StorageService } from "../services/StorageService";
 import Pagination from "react-bootstrap-4-pagination";
 import { sortIncreasing, sortDecreasing } from "../utils/sortFunctions";
 
-import "../assets/listhotel.css";
+import "../assets/listHotel/listhotel.css";
 
 const ListHotel = () => {
   const [displayedHotelList, setDisplayedHotelList] = useState(null);
@@ -99,7 +99,7 @@ const ListHotel = () => {
             />
           );
         })}
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="paginationLayout">
         <Pagination {...paginationConf} />
       </div>
     </div>

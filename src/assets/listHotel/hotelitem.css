@@ -40,6 +40,15 @@
   cursor: pointer;
 }
 
+.imageLayout {
+  flex: 1;
+}
+
+.imageLayout > img {
+  width: 100%;
+  height: 100%;
+}
+
 .hotelPoint {
   color: #17cec4;
   background-color: #f6f9fd;

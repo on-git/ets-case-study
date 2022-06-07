@@ -4,7 +4,7 @@ import { BsFillXCircleFill } from "react-icons/bs";
 import DeleteHotelDialog from "./DeleteHotelDialog";
 import { StorageService } from "../services/StorageService";
 
-import "../assets/hotelitem.css";
+import "../assets/listHotel/hotelitem.css";
 
 const MAX_HOTEL_POINT = 10;
 const MIN_HOTEL_POINT = 0;
@@ -46,12 +46,11 @@ const HotelItem = ({ hotelDetails, onUserAction }) => {
         className="deleteHotelButton"
         onClick={() => setDisplayDialog(true)}
       />
-      <div style={{ flex: "1" }}>
+      <div className="imageLayout">
         <img
           src="https://images.etstur.com/files/images/hotelImages/TR/51957/m/Titanic-Deluxe-Golf-Belek-Genel-300924.jpg"
           loading="lazy"
           alt="hotelImg"
-          style={{ width: "100%", height: "100%" }}
         />
       </div>
       <div className="itemBody">

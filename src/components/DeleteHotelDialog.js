@@ -4,6 +4,8 @@ import { StorageService } from "../services/StorageService";
 import { useState } from "react";
 import { BsCheckLg } from "react-icons/bs";
 
+import "../assets/listHotel/deletehotel.css";
+
 const DeleteHotelDialog = (props) => {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const storageService = new StorageService();
@@ -29,7 +31,7 @@ const DeleteHotelDialog = (props) => {
 
   return (
     <Modal show={true} onHide={handleClose}>
-      <Modal.Header closeButton style={{ border: "none" }}>
+      <Modal.Header closeButton={!deleteSuccess} style={{ border: "none" }}>
         <Modal.Title>Oteli Sil</Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ textAlign: "center" }}>
@@ -42,13 +44,7 @@ const DeleteHotelDialog = (props) => {
           disabled={deleteSuccess}
           style={Object.assign({ flex: "1" }, buttonSuccessStyle())}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-            }}
-          >
+          <div className="deleteButtonLayout">
             {deleteSuccess && <BsCheckLg />}
             {deleteSuccess ? "SİLİNDİ" : "OTELİ SİL"}
           </div>
@@ -56,6 +52,7 @@ const DeleteHotelDialog = (props) => {
         <Button
           variant="outline-primary"
           onClick={handleClose}
+          disabled={deleteSuccess}
           style={{ flex: "1" }}
         >
           VAZGEÇ

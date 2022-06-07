@@ -7,7 +7,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import "../assets/addhotel.css";
+import "../assets/addHotel/addhotel.css";
 
 const AddHotel = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -68,13 +68,7 @@ const AddHotel = () => {
           disabled={saveSuccess}
           style={buttonSuccessStyle()}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-around",
-            }}
-          >
+          <div className="saveButtonLayout">
             {saveSuccess && <BsCheckLg />}
             {saveSuccess ? "EKLENDİ" : "EKLE"}
           </div>

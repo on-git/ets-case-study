@@ -51,6 +51,23 @@ export class StorageService {
     }
   };
 
+  addHotel = (hotel) => {
+    const hotels = localStorage.getItem("hotels");
+    if (hotels) {
+      const parsed = JSON.parse(hotels);
+      let index = parsed.findIndex((h) => {
+        return h.name === hotel.name;
+      });
+      if (index === -1) {
+        parsed.push(hotel);
+        localStorage.setItem("hotels", JSON.stringify(parsed));
+      } else {
+      }
+    } else {
+      localStorage.setItem("hotels", JSON.stringify(hotel));
+    }
+  };
+
   updateHotels = (hotels) => {
     localStorage.setItem("hotels", hotels);
   };

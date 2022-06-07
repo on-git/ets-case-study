@@ -1,13 +1,27 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { StorageService } from "../services/StorageService";
+import { useState } from "react";
+import { BsCheckLg } from "react-icons/bs";
 
 const DeleteHotelDialog = (props) => {
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
   const storageService = new StorageService();
+
+  const buttonSuccessStyle = () => {
+    return deleteSuccess
+      ? {
+          backgroundColor: "green",
+        }
+      : null;
+  };
 
   const handleDelete = () => {
     storageService.deleteHotel(props.hotelName);
-    props.onDeleteClicked();
+    setDeleteSuccess(true);
+    setTimeout(() => {
+      props.onDeleteClicked();
+    }, 2000);
   };
   const handleClose = () => {
     props.onCancelClicked();
@@ -22,8 +36,22 @@ const DeleteHotelDialog = (props) => {
         <b>{props.hotelName}</b>'i silmek istediğinizden emin misiniz?
       </Modal.Body>
       <Modal.Footer style={{ border: "none" }}>
-        <Button variant="primary" onClick={handleDelete} style={{ flex: "1" }}>
-          OTELİ SİL
+        <Button
+          variant="primary"
+          onClick={handleDelete}
+          disabled={deleteSuccess}
+          style={Object.assign({ flex: "1" }, buttonSuccessStyle())}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-evenly",
+            }}
+          >
+            {deleteSuccess && <BsCheckLg />}
+            {deleteSuccess ? "SİLİNDİ" : "OTELİ SİL"}
+          </div>
         </Button>
         <Button
           variant="outline-primary"

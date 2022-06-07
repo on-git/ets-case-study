@@ -17,9 +17,7 @@ export const sortDecreasing = (hotelList) => {
 export const sortByDate = (hotelList) => {
   let hotels = [...hotelList];
   hotels.sort(function (currHotel, nextHotel) {
-    return new Date(nextHotel.updatedTime) - new Date(currHotel.updatedTime)
-      ? 1
-      : -1;
+    return new Date(nextHotel.updatedTime) - new Date(currHotel.updatedTime);
   });
   return hotels;
 };

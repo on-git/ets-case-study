@@ -23,10 +23,10 @@ const ListHotel = () => {
     if (hotels) {
       switch (sortType) {
         case "Artan":
-          hotelList = sortIncreasing(hotels);
+          hotelList = sortIncreasing(hotelList);
           break;
         case "Azalan":
-          hotelList = sortDecreasing(hotels);
+          hotelList = sortDecreasing(hotelList);
           break;
         default:
       }

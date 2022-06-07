@@ -22,10 +22,10 @@ const ListHotel = () => {
     let hotelList = [...hotels];
     if (hotels) {
       switch (sortType) {
-        case "inc":
+        case "Artan":
           hotelList = sortIncreasing(hotels);
           break;
-        case "dec":
+        case "Azalan":
           hotelList = sortDecreasing(hotels);
           break;
         default:
@@ -66,7 +66,7 @@ const ListHotel = () => {
   const titleTemplate = (
     <div className="dropdownTitle">
       <BsArrowDownUp />
-      <span>Sıralama</span>
+      <span>{sortType === "" ? "Sıralama" : sortType}</span>
     </div>
   );
 
@@ -74,10 +74,18 @@ const ListHotel = () => {
     <div className="listLayout">
       <AddHotelLayout />
       <DropdownButton id="dropdown-basic-button" title={titleTemplate}>
-        <Dropdown.Item as="button" onClick={() => setSortType("inc")}>
+        <Dropdown.Item
+          as="button"
+          active={sortType === "Artan"}
+          onClick={() => setSortType("Artan")}
+        >
           Puan (Artan)
         </Dropdown.Item>
-        <Dropdown.Item as="button" onClick={() => setSortType("dec")}>
+        <Dropdown.Item
+          as="button"
+          active={sortType === "Azalan"}
+          onClick={() => setSortType("Azalan")}
+        >
           Puan (Azalan)
         </Dropdown.Item>
       </DropdownButton>

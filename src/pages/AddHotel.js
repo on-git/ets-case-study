@@ -7,6 +7,8 @@ import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import "../assets/addhotel.css";
+
 const AddHotel = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
   const storageService = new StorageService();
@@ -39,15 +41,7 @@ const AddHotel = () => {
   };
 
   return (
-    <div
-      style={{
-        height: "60vh",
-        width: "30vw",
-        display: "flex",
-        flexDirection: "column",
-        gap: "5rem",
-      }}
-    >
+    <div className="newHotelLayout">
       <Link to="/" style={{ width: "fit-content", textDecoration: "none" }}>
         <Button
           variant="outline-primary"

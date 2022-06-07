@@ -45,3 +45,12 @@
   background-color: #f6f9fd;
   font-size: large;
 }
+
+@media (hover: none) {
+  .itemLayout {
+    background-color: #f6f9fd;
+  }
+  .itemLayout > .deleteHotelButton {
+    display: block;
+  }
+}

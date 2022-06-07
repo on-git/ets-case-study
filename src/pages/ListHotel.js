@@ -6,6 +6,7 @@ import HotelItem from "../components/HotelItem";
 import { useEffect, useState } from "react";
 import { StorageService } from "../services/StorageService";
 import Pagination from "react-bootstrap-4-pagination";
+import { sortIncreasing, sortDecreasing } from "../utils/sortFunctions";
 
 import "../assets/listhotel.css";
 
@@ -58,32 +59,8 @@ const ListHotel = () => {
     loadHotels();
   }, [sortType]);
 
-  const onClickAction = () => {
+  const onUserAction = () => {
     loadHotels();
-  };
-
-  const sortIncreasing = (hotelList) => {
-    let hotels = [...hotelList];
-    hotels.sort(function (currHotel, nextHotel) {
-      if (currHotel.point === nextHotel.point) {
-        return nextHotel.updatedTime > currHotel.updatedTime;
-      } else {
-        return currHotel.point > nextHotel.point;
-      }
-    });
-    return hotels;
-  };
-
-  const sortDecreasing = (hotelList) => {
-    let hotels = [...hotelList];
-    hotels.sort(function (currHotel, nextHotel) {
-      if (currHotel.point === nextHotel.point) {
-        return nextHotel.updatedTime > currHotel.updatedTime;
-      } else {
-        return nextHotel.point > currHotel.point;
-      }
-    });
-    return hotels;
   };
 
   const titleTemplate = (
@@ -110,7 +87,7 @@ const ListHotel = () => {
             <HotelItem
               key={hotel.id}
               hotelDetails={hotel}
-              onClickAction={onClickAction}
+              onUserAction={onUserAction}
             />
           );
         })}

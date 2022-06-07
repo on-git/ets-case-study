@@ -1,3 +1,5 @@
+import { sortByDate } from "../utils/sortFunctions";
+
 export class StorageService {
   hotels = [
     {
@@ -32,18 +34,12 @@ export class StorageService {
     },
   ];
 
-  sortHotels = (hotels) => {
-    hotels.sort(function (currHotel, nextHotel) {
-      return new Date(nextHotel.updatedTime) - new Date(currHotel.updatedTime);
-    });
-  };
-
   getHotels = () => {
     const hotels = localStorage.getItem("hotels");
     if (hotels) {
       const parsed = JSON.parse(hotels);
-      this.sortHotels(parsed);
-      return parsed;
+      let hotelList = sortByDate(parsed);
+      return hotelList;
     } else {
       localStorage.setItem("hotels", JSON.stringify(this.hotels));
       this.sortHotels(this.hotels);
